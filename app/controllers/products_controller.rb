@@ -12,10 +12,10 @@ class ProductsController < ApplicationController
 
   def create
     product = Product.new(
-      name: "bath bomb",
-      price: 10,
-      image_url: "https://www.lushusa.com/dw/image/v2/BDMQ_PRD/on/demandware.static/-/Sites-lushcosmetics-export/default/dwaa7b5b89/images/product/04031_a.jpg?sw=800&sh=800",
-      description: "circular device to make foamy bath water",
+      name: params[:input_name],
+      price: params[:input_price],
+      image_url: params[:input_image_url],
+      description: params[:input_description],
     )
     product.save
     render json: product.as_json
