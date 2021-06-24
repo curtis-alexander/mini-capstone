@@ -6,6 +6,8 @@ class Product < ApplicationRecord
   validates :inventory, numericality: { only_integer: true }
   validates :description, length: { in: 10..500 }
 
+  belongs_to :supplier
+
   def is_discounted?
     if price && price < 10
       return true
@@ -25,4 +27,8 @@ class Product < ApplicationRecord
       return price + tax
     end
   end
+
+  # def supplier
+  #   Supplier.find_by(id: supplier_id)
+  # end
 end
