@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   patch "/products/:id", controller: "products", action: "update"
   delete "/products/:id", controller: "products", action: "destroy"
   post "/suppliers", controller: "suppliers", action: "create"
+  patch "/suppliers/:id", controller: "suppliers", action: "update"
 end
