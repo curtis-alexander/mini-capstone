@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   delete "/products/:id", controller: "products", action: "destroy"
   post "/suppliers", controller: "suppliers", action: "create"
   patch "/suppliers/:id", controller: "suppliers", action: "update"
+
+  post "/users" => "users#create"
 end
