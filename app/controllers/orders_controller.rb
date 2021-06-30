@@ -1,4 +1,12 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user
+
+  def index
+    orders = Order.where(user_id: current_user.id)
+    # orders = current_user.orders
+    render json: orders.as_json
+  end
+
   def create
     product = Product.find_by(id: params[:product_id])
     calculated_subtotal = params[:quantity].to_i * product.price
@@ -20,10 +28,5 @@ class OrdersController < ApplicationController
   def show
     order = Order.find_by(id: params[:id], user_id: current_user.id)
     render json: order.as_json
-  end
-
-  def index
-    orders = Order.where(user_id: current_user.id)
-    render json: orders.as_json
   end
 end
